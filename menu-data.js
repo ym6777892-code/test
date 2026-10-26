@@ -1,0 +1,125 @@
+/* ============================================================
+   E3GENHA | أعجنها — بيانات المنيو (عدّل الأسعار والأصناف من هنا فقط)
+   كل صنف: [اسم عربي, اسم إنجليزي, السعر]   |   Item: [ar, en, price]
+   kind: "medium" أو "large" لعرض شارة الحجم
+   ============================================================ */
+
+const SOCIALS = [
+  // أضف الروابط الحقيقية هنا لاحقًا، مثال:
+  // { name: "Facebook", url: "https://facebook.com/yourpage" },
+];
+
+const UI = {
+  ar: {
+    title: "E3GENHA | أعجنها — المنيو",
+    tagline: "مناقيش، بيتزا إيطالي، فطير شرقي وحلويات",
+    browse: "تصفح المنيو",
+    vat: "الأسعار غير شاملة ضريبة القيمة المضافة",
+    vatSub: "Prices do not include VAT",
+    cur: "ج.م",
+    medium: "وسط",
+    large: "كبير",
+    lang: "English",
+    nav: "أقسام المنيو",
+    rights: "جميع الحقوق محفوظة",
+  },
+  en: {
+    title: "E3GENHA | Menu",
+    tagline: "Manakeesh, Italian pizza, oriental pies and desserts",
+    browse: "Browse the menu",
+    vat: "Prices do not include VAT",
+    vatSub: "الأسعار غير شاملة ضريبة القيمة المضافة",
+    cur: "EGP",
+    medium: "Medium",
+    large: "Large",
+    lang: "العربية",
+    nav: "Menu sections",
+    rights: "All rights reserved",
+  },
+};
+
+const MENU = [
+  { id: "manakeesh", ar: "المناقيش", en: "Manakeesh", items: [
+    ["منقوشة زعتر", "Zaatar Manakeesh", 70],
+    ["منقوشة زعتر مع بصل وبندورة", "Zaatar with Onion & Tomato Manakeesh", 80],
+    ["منقوشة زعتر مع جبنة", "Zaatar with Cheese Manakeesh", 125],
+    ["منقوشة زعتر مع عسل ونعناع", "Zaatar with Honey & Mint Manakeesh", 85],
+    ["منقوشة ميكس جبنة", "Mixed Cheese Manakeesh", 100],
+    ["منقوشة جبنة حارة", "Spicy Cheese Manakeesh", 95],
+    ["منقوشة جبنة ولبنة", "Cheese & Labneh Manakeesh", 155],
+    ["منقوشة لحم بالعجين", "Lahm Bi Ajeen Manakeesh", 165],
+    ["منقوشة كفتة سبيشيال", "Special Kofta Manakeesh", 165],
+    ["منقوشة سجق", "Oriental Sausage Manakeesh", 155],
+    ["منقوشة سجق مع جبنة", "Oriental Sausage & Cheese Manakeesh", 165],
+  ]},
+  { id: "pizza-m", kind: "medium", ar: "البيتزا الإيطالي وسط", en: "Italian Pizza - Medium", items: [
+    ["بيتزا مارجريتا وسط", "Margherita Pizza - Medium", 145],
+    ["بيتزا ميكس جبنة وسط", "Mixed Cheese Pizza - Medium", 180],
+    ["بيتزا خضروات وسط", "Vegetable Pizza - Medium", 170],
+    ["بيتزا بيبروني وسط", "Pepperoni Pizza - Medium", 190],
+    ["بيتزا سلامي وسط", "Salami Pizza - Medium", 190],
+    ["بيتزا تشيكن باربيكيو وسط", "BBQ Chicken Pizza - Medium", 210],
+  ]},
+  { id: "pizza-l", kind: "large", ar: "البيتزا الإيطالي كبير", en: "Italian Pizza - Large", items: [
+    ["بيتزا مارجريتا كبير", "Margherita Pizza - Large", 210],
+    ["بيتزا ميكس جبنة كبير", "Mixed Cheese Pizza - Large", 250],
+    ["بيتزا خضروات كبير", "Vegetable Pizza - Large", 235],
+    ["بيتزا بيبروني كبير", "Pepperoni Pizza - Large", 245],
+    ["بيتزا سلامي كبير", "Salami Pizza - Large", 260],
+    ["بيتزا تشيكن باربيكيو كبير", "BBQ Chicken Pizza - Large", 275],
+  ]},
+  { id: "pies-m", kind: "medium", ar: "الفطير الشرقي الحادق وسط", en: "Savory Oriental Pies - Medium", items: [
+    ["فطير بسطرمة وسط", "Pastrami Pie - Medium", 205],
+    ["فطير بسطرمة وكيري وسط", "Pastrami & Kiri Pie - Medium", 225],
+    ["فطير سجق وسط", "Oriental Sausage Pie - Medium", 195],
+    ["فطير سجق وكيري وسط", "Oriental Sausage & Kiri Pie - Medium", 210],
+    ["فطير لحم مفروم وسط", "Minced Meat Pie - Medium", 220],
+    ["فطير شاورما دجاج وسط", "Chicken Shawarma Pie - Medium", 215],
+    ["فطير سوسيس وسط", "Hot Dog Pie - Medium", 185],
+    ["فطير بيبروني وسط", "Pepperoni Pie - Medium", 205],
+    ["فطير تونة وسط", "Tuna Pie - Medium", 210],
+    ["فطير جبنة رومي وسط", "Roumy Cheese Pie - Medium", 185],
+    ["فطير جبنة ومشروم وسط", "Cheese & Mushroom Pie - Medium", 195],
+    ["فطير ميكس أعجنها وسط", "Eenenha Mix Pie - Medium", 265],
+    ["فطير سوبر سوبريم وسط", "Super Supreme Pie - Medium", 295],
+  ]},
+  { id: "pies-l", kind: "large", ar: "الفطير الشرقي الحادق كبير", en: "Savory Oriental Pies - Large", items: [
+    ["فطير بسطرمة كبير", "Pastrami Pie - Large", 275],
+    ["فطير بسطرمة وكيري كبير", "Pastrami & Kiri Pie - Large", 305],
+    ["فطير سجق كبير", "Oriental Sausage Pie - Large", 265],
+    ["فطير سجق وكيري كبير", "Oriental Sausage & Kiri Pie - Large", 285],
+    ["فطير لحم مفروم كبير", "Minced Meat Pie - Large", 285],
+    ["فطير شاورما دجاج كبير", "Chicken Shawarma Pie - Large", 285],
+    ["فطير سوسيس كبير", "Hot Dog Pie - Large", 245],
+    ["فطير بيبروني كبير", "Pepperoni Pie - Large", 270],
+    ["فطير تونة كبير", "Tuna Pie - Large", 285],
+    ["فطير جبنة رومي كبير", "Roumy Cheese Pie - Large", 230],
+    ["فطير جبنة ومشروم كبير", "Cheese & Mushroom Pie - Large", 250],
+    ["فطير ميكس أعجنها كبير", "Eenenha Mix Pie - Large", 245],
+    ["فطير سوبر سوبريم كبير", "Super Supreme Pie - Large", 380],
+  ]},
+  { id: "desserts", ar: "الحلو", en: "Desserts", items: [
+    ["أرز باللبن", "Rice Pudding", 55],
+    ["أرز باللبن مع نوتيلا ومكسرات", "Rice Pudding with Nutella & Nuts", 85],
+    ["فطيرة نوتيلا وفستق وسط", "Nutella & Pistachio Pie - Medium", 220],
+    ["فطيرة نوتيلا وفستق كبير", "Nutella & Pistachio Pie - Large", 285],
+    ["فطيرة نوتيلا وموز وسط", "Nutella & Banana Pie - Medium", 215],
+    ["فطيرة نوتيلا وموز كبير", "Nutella & Banana Pie - Large", 280],
+    ["فطيرة نوتيلا وفراولة وسط", "Nutella & Strawberry Pie - Medium", 215],
+    ["فطيرة نوتيلا وفراولة كبير", "Nutella & Strawberry Pie - Large", 280],
+    ["فطيرة ميكس أعجنها وسط", "Eenenha Mix Dessert Pie - Medium", 230],
+    ["فطيرة ميكس أعجنها كبير", "Eenenha Mix Dessert Pie - Large", 295],
+  ]},
+  { id: "addons", ar: "الإضافات", en: "Extra Add-ons", items: [
+    ["إضافة حشو أطراف", "Stuffed Crust Add-on", 80],
+    ["إضافة سجق", "Oriental Sausage Add-on", 95],
+    ["إضافة كيري", "Kiri Cheese Add-on", 65],
+    ["إضافة بسطرمة", "Pastrami Add-on", 75],
+    ["إضافة باربيكيو", "BBQ Sauce Add-on", 50],
+    ["إضافة رانش", "Ranch Add-on", 50],
+    ["إضافة فلفل", "Pepper Add-on", 50],
+    ["إضافة مشروم", "Mushroom Add-on", 55],
+    ["إضافة زيتون", "Olives Add-on", 50],
+    ["إضافة ميكس جبنة", "Mixed Cheese Add-on", 75],
+  ]},
+];
